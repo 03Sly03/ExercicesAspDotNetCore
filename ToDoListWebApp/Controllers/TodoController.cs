@@ -47,6 +47,18 @@ namespace ToDoListWebApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult Delete(int id)
+        {
+            var tasksLIst = _dbContext.Tasks.ToList();
+            var taskFromDb = tasksLIst.FirstOrDefault(task => task.Id == id);
+            if (taskFromDb == null)
+                throw new NotImplementedException();
+            _dbContext.Tasks.Remove(taskFromDb);
+            _dbContext.SaveChanges();
+            return RedirectToAction(nameof(Index));
+            
+        }
+
         public IActionResult Privacy()
         {
             return View();

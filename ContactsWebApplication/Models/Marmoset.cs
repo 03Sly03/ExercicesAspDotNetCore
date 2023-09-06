@@ -16,6 +16,7 @@ namespace ContactsWebApplication.Models
         [Display(Name = "Age")]
         [Column("age")]
         [Required]
+        [Range(0, 100, ErrorMessage = "L'age doit être compris entre 0 et 100")]
         public int Age { get; set; }
 
         public Marmoset() { }

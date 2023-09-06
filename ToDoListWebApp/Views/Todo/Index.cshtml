@@ -27,7 +27,7 @@
                     <td>@task.Name</td>
                     <td>@task.Description</td>
                     <td>
-                        <a asp-action="UpdateTask" asp-route-id="@task.Id" class="btn @(task.Status ? " btn-success" : "btn-info")">@(task.Status ? "Terminées" : "En cours")</a>
+                        <a asp-action="UpdateTask" asp-route-id="@task.Id" class="btn @(task.Status ? " btn-success" : "btn-info")">@(task.Status ? "Terminées" : "En cours")</a> / <a asp-action="Delete" asp-route-id="@task.Id" class="btn btn-danger")">Supprimer</a>
                     </td>
                 </tr>
             }

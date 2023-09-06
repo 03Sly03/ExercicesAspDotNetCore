@@ -8,7 +8,7 @@ namespace ContactsWebApplication.Repositories
 {
     public class MarmosetRepository : IRepository<Marmoset>
     {
-        private ApplicationDbContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
         public MarmosetRepository(ApplicationDbContext dbContext)
         {

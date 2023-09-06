@@ -1,10 +1,15 @@
+using ContactsWebApplication.Repositories;
 using Microsoft.EntityFrameworkCore;
 using ToDoListWebApp.Data;
+using ToDoListWebApp.Models;
+using ToDoListWebApp.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IRepository<MyTask>, MyTaskRepository>();
 
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
