@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactsWebApplication", "ContactsWebApplication\ContactsWebApplication.csproj", "{72A44C89-2647-4B08-8259-E90D941FABCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoListWebApp", "ToDoListWebApp\ToDoListWebApp.csproj", "{61E83F4C-1F9B-4D67-AE05-23C65D668A31}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{72A44C89-2647-4B08-8259-E90D941FABCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72A44C89-2647-4B08-8259-E90D941FABCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72A44C89-2647-4B08-8259-E90D941FABCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72A44C89-2647-4B08-8259-E90D941FABCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61E83F4C-1F9B-4D67-AE05-23C65D668A31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61E83F4C-1F9B-4D67-AE05-23C65D668A31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61E83F4C-1F9B-4D67-AE05-23C65D668A31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61E83F4C-1F9B-4D67-AE05-23C65D668A31}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D969C9C-229B-46C1-BB75-60A9566B1900}
+	EndGlobalSection
+EndGlobal

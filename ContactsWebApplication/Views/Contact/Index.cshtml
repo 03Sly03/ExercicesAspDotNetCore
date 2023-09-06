@@ -1,0 +1,41 @@
+﻿@model List<Contact>
+
+@{
+    ViewData["Title"] = "Liste des contacts";
+}
+
+<h1>Liste des contacts</h1>
+<p>Ici, retrouvez tout vos contacts !</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">@Html.DisplayNameForInnerType((Contact c) => c.Firstname)</th>
+            <th scope="col">@Html.DisplayNameForInnerType((Contact c) => c.Lastname)</th>
+            <th scope="col">@Html.DisplayNameForInnerType((Contact c) => c.Email)</th>
+            <th scope="col">@Html.DisplayNameForInnerType((Contact c) => c.Phone)</th>
+            <th scope="col">@Html.DisplayNameForInnerType((Contact c) => c.Address)</th>
+            <th scope="col">@Html.DisplayNameForInnerType((Contact c) => c.City)</th>
+            <th scope="col">Actions</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Contact contact in Model)
+        {
+            <tr>
+                <th scope="row">@contact.Id</th>
+                <td>@contact.Firstname</td>
+                <td>@contact.Lastname</td>
+                <td>@contact.Email</td>
+                <td>@contact.Phone</td>
+                <td>@contact.Address</td>
+                <td>@contact.City</td>
+                <td><a asp-action="Details" asp-route-id="@contact.Id" class="btn btn-primary">Voir</a> / <a asp-action="Delete" asp-route-id="@contact.Id" class="btn btn-danger">Supprimer</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p><a asp-action="Add" class="btn btn-success">Ajouter un contact</a></p>

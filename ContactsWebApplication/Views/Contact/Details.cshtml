@@ -1,0 +1,41 @@
+﻿@model Contact
+
+@{
+    ViewData["Title"] = "Détails";
+}
+
+<h1>Détails d'un contact</h1>
+@* <div>
+    <p>@Model[0].Id - @Model[0].Firstname @Model[0].Lastname</p>
+    <p>@Model[0].Email</p>
+    <p>@Model[0].Phone</p>
+    <p>@Model[0].Address, @Model[0].City</p>
+</div> *@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">@Html.DisplayNameForInnerType((Contact c) => c.Firstname)</th>
+            <th scope="col">@Html.DisplayNameForInnerType((Contact c) => c.Lastname)</th>
+            <th scope="col">@Html.DisplayNameForInnerType((Contact c) => c.Email)</th>
+            <th scope="col">@Html.DisplayNameForInnerType((Contact c) => c.Phone)</th>
+            <th scope="col">@Html.DisplayNameForInnerType((Contact c) => c.Address)</th>
+            <th scope="col">@Html.DisplayNameForInnerType((Contact c) => c.City)</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <th scope="row">@Model.Id</th>
+            <td>@Model.Firstname</td>
+            <td>@Model.Lastname</td>
+            <td>@Model.Email</td>
+            <td>@Model.Phone</td>
+            <td>@Model.Address</td>
+            <td>@Model.City</td>
+            </tr>
+    </tbody>
+</table>
+
+<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Supprimer</a>
+<a asp-action="Index" class="btn btn-primary">Retour à la liste</a>

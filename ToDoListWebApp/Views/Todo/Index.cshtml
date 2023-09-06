@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Page d'accueil";
+}
+
+@model List<MyTask>;
+
+<div class="text-center">
+    <h1 class="display-4">Liste de tâches</h1>
+</div>
+
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">@Html.DisplayNameForInnerType((MyTask myTask) => myTask.Id)</th>
+                <th scope="col">@Html.DisplayNameForInnerType((MyTask myTask) => myTask.Name)</th>
+                <th scope="col">@Html.DisplayNameForInnerType((MyTask myTask) => myTask.Description)</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+           @foreach (MyTask task in Model)
+            {
+                <tr>
+                    <th scope="row">@task.Id</th>
+                    <td>@task.Name</td>
+                    <td>@task.Description</td>
+                    <td>
+                        <a asp-action="UpdateTask" asp-route-id="@task.Id" class="btn @(task.Status ? " btn-success" : "btn-info")">@(task.Status ? "Terminées" : "En cours")</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-action="AddTask" class="btn btn-success">Ajouter une tâche</a>
+
+</div>

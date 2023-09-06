@@ -1,0 +1,32 @@
+﻿@model List<Marmoset>
+
+@{
+    ViewData["Title"] = "Liste des oustitis";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">@Html.DisplayNameForInnerType((Marmoset marmoset) => marmoset.Name)</th>
+            <th scope="col">@Html.DisplayNameForInnerType((Marmoset marmoset) => marmoset.Age)</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Marmoset marmoset in Model)
+        {
+            <tr>
+                <th scope="row">@marmoset.Id</th>
+                <td>@marmoset.Name</td>
+                <td>@marmoset.Age</td>
+                <td><a asp-action="Details" asp-route-id="@marmoset.Id" class="btn btn-primary">Voir</a> / <a asp-action="Delete" asp-route-id="@marmoset.Id" class="btn btn-danger">Supprimer</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="CreateRandom" class="btn btn-success">Créer un oustiti aléatoire</a>
+<a asp-action="DisplayAddForm" class="btn btn-success">Créer un oustiti</a>

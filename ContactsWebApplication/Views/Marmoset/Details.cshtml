@@ -1,0 +1,19 @@
+﻿@model Marmoset
+
+@{
+    ViewData["Title"] = "Détail du ouistiti";
+}
+
+<h1>@ViewData["Title"] "@Model.Name"</h1>
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">@Html.DisplayNameForInnerType((Marmoset marmoset) => marmoset.Name) : @Model.Name</h5>
+        <h5 class="card-title">@Html.DisplayNameForInnerType((Marmoset marmoset) => marmoset.Age) : @Model.Age</h5>
+        <p class="card-text">@Model.Name est un ouistiti agé de @Model.Age ans</p>
+    </div>
+</div>
+
+<a asp-action="Index" class="btn btn-primary">Retour à la liste</a>
+<a asp-route-id="@((Model.Name) == null ? Model.Id : Model.Id - 1)">Précédent</a>
+<a asp-route-id="@((Model.Name) == null ? Model.Id : Model.Id + 1)">Suivant</a>
