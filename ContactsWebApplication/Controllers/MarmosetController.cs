@@ -25,14 +25,27 @@ namespace ContactsWebApplication.Controllers
             return View(marmoset);
         }
 
-        public IActionResult DisplayAddForm()
+        public IActionResult Add()
         {
-            return View("Add");
+            return View();
         }
-        public IActionResult SendMarmoset(Marmoset marmoset)
+        public IActionResult Update(int id)
         {
-            _marmosetRepository.Add(marmoset);
-            return RedirectToAction(nameof(Index));
+            var marmoset = _marmosetRepository.GetById(id);
+            if (marmoset == null)
+                return View("Error");
+            else
+                _marmosetRepository.Update(marmoset);
+            return View("Add", marmoset);
+        }
+
+        public IActionResult Submit(Marmoset marmoset)
+        {
+            if (marmoset.Id == 0)
+                _marmosetRepository.Add(marmoset);
+            else
+                _marmosetRepository.Update(marmoset);
+            return RedirectToAction("Index");
         }
 
         [NonAction]
@@ -58,6 +71,10 @@ namespace ContactsWebApplication.Controllers
 
         public IActionResult Delete(int id)
         {
+            if (_marmosetRepository.GetById(id) == null)
+            {
+
+            }
             var marmoset = _marmosetRepository.GetById(id)!;
             _marmosetRepository.Delete(id);
             return RedirectToAction(nameof(Index));

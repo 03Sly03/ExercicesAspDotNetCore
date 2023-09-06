@@ -22,11 +22,17 @@
                 <th scope="row">@marmoset.Id</th>
                 <td>@marmoset.Name</td>
                 <td>@marmoset.Age</td>
-                <td><a asp-action="Details" asp-route-id="@marmoset.Id" class="btn btn-primary">Voir</a> / <a asp-action="Delete" asp-route-id="@marmoset.Id" class="btn btn-danger">Supprimer</a></td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@marmoset.Id" class="btn btn-primary">Voir</a>
+                    /
+                    <a asp-action="Update" asp-route-id="@marmoset.Id" class="btn btn-warning">Modifier</a>
+                    / 
+                    <a asp-action="Delete" asp-route-id="@marmoset.Id" class="btn btn-danger">Supprimer</a>
+                    </td>
             </tr>
         }
     </tbody>
 </table>
 
 <a asp-action="CreateRandom" class="btn btn-success">Créer un oustiti aléatoire</a>
-<a asp-action="DisplayAddForm" class="btn btn-success">Créer un oustiti</a>
+<a asp-action="Add" class="btn btn-info">Créer un oustiti</a>

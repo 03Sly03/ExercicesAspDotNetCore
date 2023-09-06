@@ -27,7 +27,7 @@ namespace ContactsWebApplication.Repositories
         /// </summary>
         /// <param name="entity">Entité à modifier avec l'Id renseigné.</param>
         /// <returns>Un booléen pour savoir si la mise à jour a réussi.</returns>
-        //bool Update(TEntity entity);//bool Update(int id, TEntity entity);// autre signature possible
+        bool Update(TEntity entity);//bool Update(int id, TEntity entity);// autre signature possible
 
 
         //DELETE

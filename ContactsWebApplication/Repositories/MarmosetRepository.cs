@@ -44,6 +44,22 @@ namespace ContactsWebApplication.Repositories
                              .ToList();
         }
 
+        // UPDATE
+        public bool Update(Marmoset marmoset)
+        {
+        var marmosetFromDb = GetById(marmoset.Id);
+
+            if (marmosetFromDb == null)
+                return false;
+
+            if (marmosetFromDb.Name != marmoset.Name)
+                marmosetFromDb.Name = marmoset.Name;
+            if (marmosetFromDb.Age != marmoset.Age)
+                marmosetFromDb.Age = marmoset.Age;
+
+            return _dbContext.SaveChanges() > 0;
+        }
+
         //DELETE
         public bool Delete(int entityId)
         {
