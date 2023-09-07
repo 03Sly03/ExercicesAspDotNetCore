@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Tous les produits que qu'on vendent !";
+}
+
+@model List<Product>;
+
+<div class="text-center mb-5">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+
+<div class="row row-cols-4">
+    <div class="col-2">
+        <a asp-action="Add" class="btn btn-primary">Ajouter un produit</a>
+    </div>
+    <div class="col-10 row row-cols-3">
+        @foreach (Product product in Model)
+        {
+            <div class="card mx-3" style="width: 18rem;">
+                <h6>@product.Category</h6>
+                <img src="@(product.PicturePath != null ? product.PicturePath : "https://www.eps.org/global_graphics/default-store-350x350.jpg")" class="card-img-top h-100" alt="icone gris d'un sac">
+                <div class="card-body">
+                <h5 class="card-title">@product.Name <span>@product.Price</span></h5>
+                <p class="card-text">@product.Description</p>
+                <a asp-action="Details" class="btn btn-primary">Voir plus ...</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

@@ -2,6 +2,7 @@
 using ContactsWebApplication.Models;
 using ContactsWebApplication.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace ContactsWebApplication.Controllers
 {
@@ -54,6 +55,45 @@ namespace ContactsWebApplication.Controllers
             Random random = new Random();
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        public IActionResult Favoris()
+        {
+            var favListIdOfMarmoset = _GetFavoris();
+            List<Marmoset> favListOfMarmoset = new List<Marmoset>();
+            foreach (int id in favListIdOfMarmoset)
+            {
+                var marmoset = _marmosetRepository.GetById(id);
+                if (marmoset != null)
+                    favListOfMarmoset.Add(marmoset);
+            }
+            return View(favListOfMarmoset);
+        }
+
+        public IActionResult AddToFav(int id) 
+        {
+            List<int> favIdsMarmoset = _GetFavoris();
+            favIdsMarmoset.Add(id);
+
+            string? favCookie = JsonSerializer.Serialize(favIdsMarmoset);
+
+            //HttpContext.Response.Cookies.Append("ouistitiFavoris", favCookie); // enregistrement via cookies
+            HttpContext.Session.SetString("myFavorite", favCookie); // enregistrement via session (côté serveur)
+            return RedirectToAction(nameof(Index));
+            
+        }
+        
+        private List<int> _GetFavoris() // retournera la liste des ouisitis favoris depuis COOKIES ou SESSION
+        {
+            List<int> favIdsMarmoset = new List<int>();
+
+            // récup d'un cookie
+            //string? favCookie = HttpContext.Request.Cookies["ouistitiFavoris"]; // sous forme de chaine de caractères (depuis la requête entrante)
+            string? favCookie = HttpContext.Session.GetString("myFavorite"); // sous forme de chaine de caractères (depuis la requête entrante)
+
+            if (favCookie != null)
+                favIdsMarmoset = JsonSerializer.Deserialize<List<int>>(favCookie)!;
+            return favIdsMarmoset;
         }
 
         public IActionResult CreateRandom(Marmoset marmoset)

@@ -26,6 +26,9 @@ builder.Services.AddSingleton<FakeContactsDb>();
 // Enregistrer pour les repositories
 builder.Services.AddScoped<IRepository<Marmoset>, MarmosetRepository>();
 
+// Ajout service de Session
+builder.Services.AddSession();
+
 // cas fichier appsettigns.json pour le ConnectionString
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
@@ -33,7 +36,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline. /!\ l'ordre des middlewares a un impact.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -43,6 +46,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+// Utilisation du middleware Session
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
